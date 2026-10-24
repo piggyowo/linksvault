@@ -39,9 +39,10 @@ a{color:inherit;text-decoration:none}
 .mock-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.09)}
 .mock-card:last-child{margin-bottom:0}
 .thumb{width:72px;height:72px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:30px}
+.mock-card .txt{min-width:0;flex:1}
 .mock-card b{display:block;font-size:15px}
-.mock-card span{font-size:13px;color:var(--sub);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px}
-.pill{display:inline-block;margin-top:6px;font-size:11px;background:#fdf0e3;color:#b45a12;border-radius:999px;padding:2px 9px}
+.mock-card .desc{display:block;font-size:13px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-card .pill{display:inline-block;margin-top:6px;font-size:11px;background:#fdf0e3;color:#b45a12;border-radius:999px;padding:2px 9px}
 .section{max-width:980px;margin:0 auto;padding:80px 20px}
 .section h2{font-size:32px;text-align:center;letter-spacing:-.01em}
 .section .sub{text-align:center;color:var(--sub);margin-top:8px;font-size:17px}
@@ -91,9 +92,9 @@ a{color:inherit;text-decoration:none}
   </div>
   <div class="mock reveal">
     <div class="mock-bar"><i></i><i></i><i></i></div>
-    <div class="mock-card"><div class="thumb" style="background:#fdf0e3">🦫</div><div><b>LinkVault 部署教程</b><span>一步步跟着做，不用 AI 也能搭出自己的收藏库</span><span class="pill">教程</span></div></div>
-    <div class="mock-card"><div class="thumb" style="background:#e8f5e9">🌿</div><div><b>Cloudflare 免费档完全指南</b><span>Workers、D1、R2、Tunnel，免费额度怎么用才不超</span><span class="pill">收藏</span></div></div>
-    <div class="mock-card"><div class="thumb" style="background:#e3f2fd">🎬</div><div><b>本周新片单</b><span>TMDB 上新加入的几部，先存着周末慢慢看</span><span class="pill">影视</span></div></div>
+    <div class="mock-card"><div class="thumb" style="background:#fdf0e3">🦫</div><div class="txt"><b>LinkVault 部署教程</b><span class="desc">一步步跟着做，不用 AI 也能搭出自己的收藏库</span><span class="pill">教程</span></div></div>
+    <div class="mock-card"><div class="thumb" style="background:#e8f5e9">🌿</div><div class="txt"><b>Cloudflare 免费档完全指南</b><span class="desc">Workers、D1、R2、Tunnel，免费额度怎么用才不超</span><span class="pill">收藏</span></div></div>
+    <div class="mock-card"><div class="thumb" style="background:#e3f2fd">🎬</div><div class="txt"><b>本周新片单</b><span class="desc">TMDB 上新加入的几部，先存着周末慢慢看</span><span class="pill">影视</span></div></div>
   </div>
 </section>
 
