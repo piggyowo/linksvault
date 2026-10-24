@@ -78,11 +78,6 @@ D1 数据库 `linkvault`，一张表 `bookmarks`（完整建表语句见 [schema
 `worker.js` 里机器人回复的链接写死了示例域名，搜 `siteLine` 这一行，把
 `https://links.boocool.shop` 换成你自己的域名（不接机器人可以不管）。
 
-## 贡献者
-
-- piggyowo：项目发起、需求与验收
-- Muse：代码与文档编写（AI 助手）
-
 ## 免费额度（Cloudflare 免费档，2026 年）
 
 - Worker：每天 10 万次请求（静态文件请求不计）
