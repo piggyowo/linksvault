@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LinkVault — 把喜欢的网站，存进自己的小仓库</title>
+<style>
+*{box-sizing:border-box;margin:0}
+:root{--ink:#1d1d1f;--sub:#6e6e73;--bg:#f5f5f7;--card:#fff;--orange:#e07f3e;--orange2:#f0a04e;--line:#e5e5ea}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(20px);background:rgba(255,255,255,.72);border-bottom:1px solid var(--line)}
+.nav-in{max-width:980px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.logo{font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#f6bd75,#e07f3e);display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:17px}
+.nav-links{margin-left:auto;display:flex;gap:20px;font-size:14px;color:var(--sub)}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:640px){.nav-links{display:none}}
+.hero{max-width:980px;margin:0 auto;padding:88px 20px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:560px;height:560px;left:50%;top:-180px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(240,164,78,.22),transparent);pointer-events:none}
+.mascot{font-size:72px;display:inline-block;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.2;letter-spacing:-.02em;margin:16px 0}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:19px;color:var(--sub);max-width:620px;margin:0 auto}
+.btns{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 26px;border-radius:999px;font-size:16px;font-weight:600;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(224,127,62,.35)}
+.btn-solid:hover{background:#d9732f;box-shadow:0 12px 26px rgba(224,127,62,.45)}
+.btn-ghost{background:var(--bg);color:var(--ink)}
+.btn-ghost:hover{background:#e8e8ed}
+.mock{max-width:760px;margin:56px auto 0;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:22px;text-align:left;box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.mock-bar{display:flex;gap:6px;margin-bottom:16px}
+.mock-bar i{width:11px;height:11px;border-radius:50%;background:#ddd;display:block}
+.mock-bar i:nth-child(1){background:#ff5f57}.mock-bar i:nth-child(2){background:#febc2e}.mock-bar i:nth-child(3){background:#28c840}
+.mock-card{display:flex;gap:14px;background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:transform .25s ease,box-shadow .25s ease}
+.mock-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.09)}
+.mock-card:last-child{margin-bottom:0}
+.thumb{width:72px;height:72px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:30px}
+.mock-card b{display:block;font-size:15px}
+.mock-card span{font-size:13px;color:var(--sub);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px}
+.pill{display:inline-block;margin-top:6px;font-size:11px;background:#fdf0e3;color:#b45a12;border-radius:999px;padding:2px 9px}
+.section{max-width:980px;margin:0 auto;padding:80px 20px}
+.section h2{font-size:32px;text-align:center;letter-spacing:-.01em}
+.section .sub{text-align:center;color:var(--sub);margin-top:8px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}}
+.feat{background:var(--bg);border-radius:20px;padding:28px 24px;transition:transform .3s ease,box-shadow .3s ease,background .3s ease}
+.feat:hover{transform:translateY(-5px);background:#fff;box-shadow:0 16px 36px rgba(0,0,0,.09)}
+.feat .ic{font-size:34px}
+.feat h3{font-size:18px;margin:12px 0 6px}
+.feat p{font-size:14px;color:var(--sub)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+.step{text-align:center;padding:8px}
+.step .num{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:18px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{font-size:14px;color:var(--sub)}
+.details{background:var(--bg);border-radius:20px;padding:32px;margin-top:44px}
+.details dl{display:grid;grid-template-columns:120px 1fr;gap:14px 20px;font-size:15px}
+.details dt{color:var(--sub)}
+.details dd a{color:#0071e3}
+@media(max-width:540px){.details dl{grid-template-columns:1fr}.details dt{font-weight:600;color:var(--ink)}}
+.footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--sub);font-size:13px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}.mascot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-in">
+  <a class="logo" href="#"><i>🦫</i>LinkVault</a>
+  <nav class="nav-links">
+    <a href="#features">功能</a>
+    <a href="#how">使用方法</a>
+    <a href="#details">细节</a>
+    <a href="https://github.com/piggyowo/linksvault">GitHub →</a>
+  </nav>
+</div></header>
+
+<section class="hero">
+  <div class="mascot">🦫</div>
+  <h1>把喜欢的网站，<br/>存进<span>自己的小仓库</span></h1>
+  <p>LinkVault 是一个个人网站收藏库：随手丢链接，自动抓预览、分类、去重。跑在 Cloudflare 免费档上，不花一分钱。</p>
+  <div class="btns">
+    <a class="btn btn-solid" href="https://links.boocool.shop">开始收藏 →</a>
+    <a class="btn btn-ghost" href="https://github.com/piggyowo/linksvault">在 GitHub 上查看</a>
+  </div>
+  <div class="mock reveal">
+    <div class="mock-bar"><i></i><i></i><i></i></div>
+    <div class="mock-card"><div class="thumb" style="background:#fdf0e3">🦫</div><div><b>LinkVault 部署教程</b><span>一步步跟着做，不用 AI 也能搭出自己的收藏库</span><span class="pill">教程</span></div></div>
+    <div class="mock-card"><div class="thumb" style="background:#e8f5e9">🌿</div><div><b>Cloudflare 免费档完全指南</b><span>Workers、D1、R2、Tunnel，免费额度怎么用才不超</span><span class="pill">收藏</span></div></div>
+    <div class="mock-card"><div class="thumb" style="background:#e3f2fd">🎬</div><div><b>本周新片单</b><span>TMDB 上新加入的几部，先存着周末慢慢看</span><span class="pill">影视</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2 class="reveal">它能做什么</h2>
+  <p class="sub reveal">收藏、整理、找回，一个页面全搞定</p>
+  <div class="grid">
+    <div class="feat reveal"><div class="ic">🔖</div><h3>一键收藏</h3><p>浏览器分享菜单、Telegram 机器人，看到好东西随手丢进来，不打断阅读。</p></div>
+    <div class="feat reveal"><div class="ic">🖼️</div><h3>预览卡片</h3><p>自动抓标题、简介和封面图，收藏夹不再是一堆干巴巴的链接。</p></div>
+    <div class="feat reveal"><div class="ic">🔍</div><h3>秒搜</h3><p>标题、备注、分类都能搜，几百条收藏也能一下找到。</p></div>
+    <div class="feat reveal"><div class="ic">🤖</div><h3>机器人同步</h3><p>Telegram 发的链接和网页是同一个库，两边天然同步，不用来回导。</p></div>
+    <div class="feat reveal"><div class="ic">📥</div><h3>导入导出</h3><p>导出 HTML 喂给 Edge，JSON 备份随时带走；导入旧收藏自动去重。</p></div>
+    <div class="feat reveal"><div class="ic">🆓</div><h3>全免费</h3><p>Workers + D1 免费档就能跑，数据存在你自己的库里，不寄人篱下。</p></div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <h2 class="reveal">看它怎么用</h2>
+  <p class="sub reveal">三步，从"以后再看"到"随时能翻到"</p>
+  <div class="steps">
+    <div class="step reveal"><div class="num">1</div><h3>发链接</h3><p>网页上新增，或者 Telegram 发给 @Capylink_bot，格式是「链接 #分类 备注」。</p></div>
+    <div class="step reveal"><div class="num">2</div><h3>自动整理</h3><p>机器人抓预览、贴分类，重复链接会提醒你，收藏夹永远不乱。</p></div>
+    <div class="step reveal"><div class="num">3</div><h3>随时翻</h3><p>打开收藏页，搜索、按分类浏览，想看的东西一直都在。</p></div>
+  </div>
+</section>
+
+<section class="section" id="details">
+  <h2 class="reveal">Additional Details</h2>
+  <div class="details reveal"><dl>
+    <dt>技术栈</dt><dd>Cloudflare Workers + D1，全免费档</dd>
+    <dt>费用</dt><dd>零成本，免费额度内随便跑</dd>
+    <dt>隐私</dt><dd>数据存在你自己的 D1 里；公开只读，写操作需要登录</dd>
+    <dt>开源</dt><dd><a href="https://github.com/piggyowo/linksvault">github.com/piggyowo/linksvault</a>，含零命令行部署教程</dd>
+  </dl></div>
+</section>
+
+<footer class="footer">🦫 LinkVault · 你的网站，值得一个自己的仓库</footer>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 3) * 80 + 'ms';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
