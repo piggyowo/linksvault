@@ -75,8 +75,7 @@ D1 数据库 `linkvault`，一张表 `bookmarks`（完整建表语句见 [schema
 
 ## 部署前唯一要改的一处
 
-`worker.js` 里机器人回复的链接写死了示例域名，搜 `siteLine` 这一行，把
-`https://links.boocool.shop` 换成你自己的域名（不接机器人可以不管）。
+`worker.js` 顶部有个 `SITE_URL`，把它改成你自己的收藏夹地址（机器人回复里用；不接机器人可以不管）。
 
 ## 免费额度（Cloudflare 免费档，2026 年）
 
