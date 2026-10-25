@@ -40,6 +40,9 @@ a:hover{text-decoration:underline}
 .step-body p:last-child{margin-bottom:0}
 .note{background:#fdf0e3;border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-size:14px}
 .note code{background:#fbeedc}
+.step-img{margin:16px 0 6px}
+.step-img svg{width:100%;height:auto;display:block}
+.step-img figcaption{text-align:center;font-size:13px;color:var(--sub);margin-top:8px}
 .check{list-style:none;padding-left:0;margin:0 0 18px}
 .check li{margin-bottom:8px}
 .check li::before{content:"☐ ";font-size:16px}
@@ -81,7 +84,9 @@ a:hover{text-decoration:underline}
     <li>打开 Cloudflare 仪表盘，左侧点 <strong>Workers 和 Pages</strong> → 顶部点 <strong>D1</strong>（如果没有 D1 入口，先随便创建一个 Worker 再回来，D1 就会出现）。</li>
     <li>点 <strong>创建数据库</strong>，名字填 <code>linkvault</code>，点创建。</li>
     <li>记下这个数据库，名字后面会用到。</li>
-  </ol></div></div>
+  </ol>
+  <figure class="step-img"><svg viewBox="0 0 800 520" role="img" aria-label="第 1 步示意图"><rect x="8" y="8" width="784" height="504" rx="24" fill="#fffdf8" stroke="#e5e5ea"/><rect x="60" y="40" width="680" height="440" rx="20" fill="#fff" stroke="#e5e5ea"/><circle cx="100" cy="70" r="9" fill="#e0e0e0"/><circle cx="130" cy="70" r="9" fill="#e0e0e0"/><circle cx="160" cy="70" r="9" fill="#e0e0e0"/><rect x="60" y="92" width="680" height="2" fill="#e5e5ea"/><rect x="60" y="94" width="200" height="386" fill="#f5f5f7"/><rect x="80" y="130" width="160" height="44" rx="22" fill="#f0a04e"/><rect x="80" y="205" width="140" height="20" rx="10" fill="#ddd"/><rect x="80" y="265" width="140" height="20" rx="10" fill="#ddd"/><rect x="80" y="325" width="140" height="20" rx="10" fill="#ddd"/><rect x="300" y="130" width="320" height="22" rx="11" fill="#ddd"/><rect x="300" y="175" width="240" height="22" rx="11" fill="#ddd"/><rect x="300" y="220" width="320" height="22" rx="11" fill="#ddd"/><rect x="430" y="290" width="220" height="76" rx="38" fill="#f0a04e"/><rect x="300" y="400" width="200" height="22" rx="11" fill="#ddd"/><text x="668" y="462" font-size="62">🦫</text></svg><figcaption>示意图：左侧进 Workers 和 Pages → 顶部 D1 → 创建数据库</figcaption></figure>
+  </div></div>
 
   <div class="step reveal"><div class="step-head"><div class="num">2</div><h3>建表</h3></div><div class="step-body"><ol>
     <li>点进刚建好的 <code>linkvault</code> 数据库 → 点 <strong>控制台</strong>（Console）。</li>
@@ -96,6 +101,7 @@ a:hover{text-decoration:underline}
     <li>把编辑器里的默认代码全选删掉，把本仓库 <code>worker.js</code> 的全部内容粘贴进去。</li>
     <li>点 <strong>保存并部署</strong>（Save and Deploy）。等它显示部署成功。</li>
   </ol>
+  <figure class="step-img"><svg viewBox="0 0 800 520" role="img" aria-label="第 3 步示意图"><rect x="8" y="8" width="784" height="504" rx="24" fill="#fffdf8" stroke="#e5e5ea"/><rect x="60" y="40" width="680" height="440" rx="20" fill="#fff" stroke="#e5e5ea"/><circle cx="100" cy="70" r="9" fill="#e0e0e0"/><circle cx="130" cy="70" r="9" fill="#e0e0e0"/><circle cx="160" cy="70" r="9" fill="#e0e0e0"/><rect x="60" y="92" width="680" height="2" fill="#e5e5ea"/><rect x="100" y="130" width="320" height="22" rx="11" fill="#ddd"/><rect x="100" y="175" width="260" height="22" rx="11" fill="#ddd"/><rect x="100" y="220" width="200" height="22" rx="11" fill="#ddd"/><rect x="100" y="265" width="380" height="22" rx="11" fill="#ddd"/><rect x="100" y="310" width="240" height="22" rx="11" fill="#ddd"/><rect x="100" y="355" width="340" height="22" rx="11" fill="#ddd"/><rect x="100" y="400" width="220" height="22" rx="11" fill="#ddd"/><rect x="550" y="120" width="150" height="64" rx="16" fill="#f0a04e"/><text x="668" y="462" font-size="62">🦫</text></svg><figcaption>示意图：编辑器里粘贴代码，点右上角保存并部署</figcaption></figure>
   <div class="note">注意：如果你要改机器人回复里的收藏夹地址，就在这一步粘贴前改：<code>worker.js</code> 顶部的 <code>SITE_URL</code>，把它改成你自己的域名。不接 Telegram 机器人可以跳过。</div>
   </div></div>
 
@@ -106,7 +112,9 @@ a:hover{text-decoration:underline}
     <li>变量名填 <code>DB</code>（必须大写，就是这两个字母）。</li>
     <li>数据库选第 1 步建的 <code>linkvault</code>。</li>
     <li>保存后<strong>重新部署一次</strong>（绑定改动要重新部署才生效，页面一般会提示你点部署）。</li>
-  </ol></div></div>
+  </ol>
+  <figure class="step-img"><svg viewBox="0 0 800 520" role="img" aria-label="第 4 步示意图"><rect x="8" y="8" width="784" height="504" rx="24" fill="#fffdf8" stroke="#e5e5ea"/><rect x="60" y="40" width="680" height="440" rx="20" fill="#fff" stroke="#e5e5ea"/><circle cx="100" cy="70" r="9" fill="#e0e0e0"/><circle cx="130" cy="70" r="9" fill="#e0e0e0"/><circle cx="160" cy="70" r="9" fill="#e0e0e0"/><rect x="60" y="92" width="680" height="2" fill="#e5e5ea"/><g stroke="#f0a04e" stroke-width="7" fill="none"><ellipse cx="160" cy="150" rx="48" ry="16"/><path d="M112 150 v70 a48 16 0 0 0 96 0 v-70"/><path d="M112 185 a48 16 0 0 0 96 0"/></g><rect x="80" y="290" width="160" height="20" rx="10" fill="#ddd"/><rect x="80" y="340" width="160" height="20" rx="10" fill="#ddd"/><rect x="300" y="130" width="360" height="56" rx="14" fill="#f0a04e"/><polyline points="630,148 645,163 660,148" stroke="#c96a1e" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="300" y="220" width="280" height="22" rx="11" fill="#ddd"/><rect x="300" y="265" width="280" height="22" rx="11" fill="#ddd"/><rect x="300" y="340" width="220" height="64" rx="16" fill="#f0a04e"/><text x="668" y="462" font-size="62">🦫</text></svg><figcaption>示意图：添加 D1 绑定，变量名填 DB，选 linkvault 库</figcaption></figure>
+  </div></div>
 
   <div class="step reveal"><div class="step-head"><div class="num">5</div><h3>设置管理员密码</h3></div><div class="step-body">
   <p>密码不写在代码里，存在 Worker 的机密变量里，换密码也不丢数据。</p><ol>
@@ -125,7 +133,9 @@ a:hover{text-decoration:underline}
   <p>现在打开这个地址测试：</p><ul>
     <li>不登录应该能看到收藏列表（刚搭好是空的，显示"还没有收藏"）。</li>
     <li>点 <strong>管理登录</strong>（或打开 <code>/login</code>），输入第 5 步设的 <code>ADMIN</code> 密码，能进管理界面、看到右下角新增按钮，说明全通了。</li>
-  </ul></div></div>
+  </ul>
+  <figure class="step-img"><svg viewBox="0 0 800 520" role="img" aria-label="第 6 步示意图"><rect x="8" y="8" width="784" height="504" rx="24" fill="#fffdf8" stroke="#e5e5ea"/><rect x="60" y="40" width="680" height="440" rx="20" fill="#fff" stroke="#e5e5ea"/><circle cx="100" cy="70" r="9" fill="#e0e0e0"/><circle cx="130" cy="70" r="9" fill="#e0e0e0"/><circle cx="160" cy="70" r="9" fill="#e0e0e0"/><rect x="60" y="92" width="680" height="2" fill="#e5e5ea"/><g stroke="#9a9a9a" stroke-width="6" fill="none"><circle cx="160" cy="180" r="52"/><ellipse cx="160" cy="180" rx="24" ry="52"/><line x1="108" y1="180" x2="212" y2="180"/><line x1="122" y1="142" x2="198" y2="142"/><line x1="122" y1="218" x2="198" y2="218"/></g><rect x="80" y="280" width="160" height="20" rx="10" fill="#ddd"/><rect x="80" y="330" width="160" height="20" rx="10" fill="#ddd"/><rect x="300" y="150" width="320" height="22" rx="11" fill="#ddd"/><rect x="300" y="195" width="240" height="22" rx="11" fill="#ddd"/><rect x="300" y="240" width="240" height="22" rx="11" fill="#ddd"/><rect x="540" y="150" width="130" height="64" rx="32" fill="#f0a04e"/><circle cx="634" cy="182" r="26" fill="#f6bd75"/><rect x="300" y="330" width="320" height="22" rx="11" fill="#ddd"/><rect x="300" y="375" width="240" height="22" rx="11" fill="#ddd"/><text x="668" y="462" font-size="62">🦫</text></svg><figcaption>示意图：域和路由里把 workers.dev 开关打开</figcaption></figure>
+  </div></div>
 
   <div class="step reveal"><div class="step-head"><div class="num">7</div><h3>（可选）绑定自己的域名</h3></div><div class="step-body">
   <p>想要 <code>https://links.你的域名</code> 这样的地址才做这一步；只用 workers.dev 地址可以跳过。</p><ol>
