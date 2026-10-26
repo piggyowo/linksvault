@@ -384,7 +384,8 @@ if(!items.length){list.innerHTML='<div class="empty"><div class="e-icon"><svg vi
 list.innerHTML=items.map(function(t,i){
 var host=hostOf(t.url);
 var fav=host?'<img class="fav" alt="" loading="lazy" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=64" onerror="this.remove()"/>':'';
-var thumbHtml=t.og_image?'<img class="thumb" alt="" loading="lazy" src="'+esc(t.og_image)+'" data-open="'+t.id+'" onerror="this.remove()"/>':'<div class="thumb ph" data-open="'+t.id+'">'+esc((t.title||host||'链').charAt(0).toUpperCase())+'</div>';
+var letter=esc((t.title||host||'链').charAt(0).toUpperCase());
+var thumbHtml=t.og_image?'<img class="thumb" alt="" loading="lazy" src="'+esc(t.og_image)+'" data-open="'+t.id+'" onerror="this.outerHTML=\'<div class=&quot;thumb ph&quot; data-open=&quot;'+t.id+'&quot;>'+letter+'</div>\'"/>':'<div class="thumb ph" data-open="'+t.id+'">'+letter+'</div>';
 var tagPills=t.tags?String(t.tags).replace(/，/g,',').split(',').map(function(x){return x.trim();}).filter(Boolean).map(function(x){return '<span class="graypill">'+esc(x)+'</span>';}).join(''):'';
 var pills=(t.cat?'<span class="tagpill">'+esc(t.cat)+'</span>':'')+tagPills;
 var descText=t.note||t.og_desc||'';
